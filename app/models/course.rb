@@ -5,4 +5,7 @@ class Course < ApplicationRecord
 
   # Associations
   belongs_to :category
+
+  # Validations
+  validates :name, :author, :state, presence: true
 end
