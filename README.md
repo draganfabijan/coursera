@@ -16,13 +16,13 @@ You need to have Docker and Docker Compose installed on your machine to run this
 1. **Clone the repository:**
 
     ```
-    git clone https://github.com/draganfabijan/airfinity.git
+    git clone https://github.com/draganfabijan/coursera.git
     ```
 
 2. **Navigate to the application directory:**
 
     ```
-    cd airfinity
+    cd coursera
     ```
 
 3. **Build the Docker images:**
