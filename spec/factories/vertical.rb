@@ -1,5 +1,5 @@
 FactoryBot.define do
   factory :vertical do
-    name { 'Health & Fitness' }
+    sequence(:name) { |n| "Health & Fitness #{n}" }
   end
 end

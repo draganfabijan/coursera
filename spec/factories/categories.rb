@@ -1,7 +1,7 @@
 FactoryBot.define do
   factory :category do
-    associations { :vertical }
-    name { "Music" }
-    state { "Active" }
+    association :vertical
+    sequence(:name) { |n| "Music #{n}" }
+    state { 'active' }
   end
 end

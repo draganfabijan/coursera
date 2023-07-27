@@ -5,5 +5,5 @@ class Category < ApplicationRecord
 
   # Associations
   belongs_to :vertical
-  have_many :courses
+  has_many :courses, dependent: :destroy
 end
