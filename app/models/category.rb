@@ -3,6 +3,6 @@
 # Category
 class Category < ApplicationRecord
 
-    # Associations
-    belongs_to :vertical
+  # Associations
+  belongs_to :vertical
 end

@@ -1,6 +1,6 @@
 FactoryBot.define do
   factory :category do
-    name { "MyString" }
-    state { "MyString" }
+    name { "Music" }
+    state { "Active" }
   end
 end
