@@ -1,5 +1,5 @@
 FactoryBot.define do
   factory :vertical do
-    name { "Health & Fitness" }
+    name { 'Health & Fitness' }
   end
 end
