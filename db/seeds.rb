@@ -5,12 +5,12 @@ end
 
 # Define categories
 categories = [
-  {name: 'Booty & Abs', vertical: verticals[0], state: 'active'},
-  {name: 'Full Body', vertical: verticals[0], state: 'active'},
-  {name: 'Advertising', vertical: verticals[1], state: 'active'},
-  {name: 'Writing', vertical: verticals[1], state: 'active'},
-  {name: 'Singing', vertical: verticals[2], state: 'active'},
-  {name: 'Music Fundamentals', vertical: verticals[2], state: 'active'}
+  { name: 'Booty & Abs', vertical: verticals[0], state: 'active'} ,
+  { name: 'Full Body', vertical: verticals[0], state: 'active'} ,
+  { name: 'Advertising', vertical: verticals[1], state: 'active'} ,
+  { name: 'Writing', vertical: verticals[1], state: 'active'} ,
+  { name: 'Singing', vertical: verticals[2], state: 'active'} ,
+  { name: 'Music Fundamentals', vertical: verticals[2], state: 'active' }
 ]
 
 # Create categories
