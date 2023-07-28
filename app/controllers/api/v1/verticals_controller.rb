@@ -1,9 +1,7 @@
 module Api
   module V1
     # Api::V1::VerticalsController
-    class VerticalsController < ActionController::API
-      rescue_from ActiveRecord::RecordNotFound, with: :record_not_found
-
+    class VerticalsController < ApplicationController
       before_action :set_vertical, only: :update
 
       def index
@@ -39,13 +37,10 @@ module Api
         )
       end
 
-      def record_not_found(*)
-        render json: { error: 'Record not found' }, status: :not_found
-      end
-
       def set_vertical
         @vertical = Vertical.find(params[:id])
       end
+
     end
   end
 end
