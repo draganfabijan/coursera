@@ -2,10 +2,15 @@ require 'rails_helper'
 
 RSpec.describe Api::V1::VerticalsController, type: :controller do
   describe 'GET #index' do
-    let!(:vertical1) { create(:vertical) }
-    let!(:vertical2) { create(:vertical) }
+    let!(:vertical_1) { create(:vertical) }
+    let!(:vertical_2) { create(:vertical) }
 
-    before { get :index }
+    before do
+      allow_any_instance_of(Vertical).to receive(:reindex).and_call_original
+      Vertical.reindex
+      get :index
+    end
+
 
     it 'returns http success' do
       expect(response).to have_http_status(:success)

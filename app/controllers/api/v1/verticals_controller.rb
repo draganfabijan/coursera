@@ -5,8 +5,8 @@ module Api
       before_action :set_vertical, only: :update
 
       def index
-        # TODO: Use ElasticSearch
-        verticals = Vertical.all
+        # TODO: Add pagination
+        verticals = Vertical.search('*').results
         render json: verticals
       end
 
