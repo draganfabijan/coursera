@@ -13,9 +13,7 @@ module Api
       end
 
       def update
-        Verticals::UpdateService.new(@vertical, vertical_params).call
-
-        if @vertical.persisted?
+        if Verticals::UpdateService.new(@vertical, vertical_params).call
           render json: @vertical
         else
           render json: @vertical.errors, status: :unprocessable_entity
