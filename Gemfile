@@ -29,11 +29,13 @@ gem 'stimulus-rails'
 # Build JSON APIs with ease [https://github.com/rails/jbuilder]
 gem 'jbuilder'
 
-# Searkick
+# Full-text search engine for Ruby, powered by Elasticsearch
 gem 'elasticsearch-model'
 gem 'elasticsearch-rails'
 gem 'searchkick'
 
+# OAuth 2 provider for secure API authorization
+gem 'doorkeeper'
 
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 4.0'
