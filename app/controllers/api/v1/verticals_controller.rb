@@ -29,7 +29,7 @@ module Api
             :id,
             :name,
             :state,
-            courses_attributes: %i[
+            courses_attributes: [
               :id,
               :name,
               :state,
