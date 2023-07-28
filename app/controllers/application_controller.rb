@@ -2,6 +2,8 @@ class ApplicationController < ActionController::API
   rescue_from ActiveRecord::RecordNotFound, with: :record_not_found
   rescue_from ActiveRecord::RecordNotUnique, with: :record_not_unique
 
+  before_action :doorkeeper_authorize!
+
   private
 
   def record_not_found
