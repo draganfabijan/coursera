@@ -4,6 +4,8 @@ module Api
     class VerticalsController < ActionController::API
       rescue_from ActiveRecord::RecordNotFound, with: :record_not_found
 
+      before_action :set_vertical, only: :update
+
       def index
         # TODO: Use ElasticSearch
         verticals = Vertical.all
@@ -11,8 +13,7 @@ module Api
       end
 
       def update
-        @vertical = Vertical.find(params[:id])
-        @vertical = Verticals::UpdateService.new(@vertical, vertical_params).call
+        Verticals::UpdateService.new(@vertical, vertical_params).call
 
         if @vertical.persisted?
           render json: @vertical
@@ -30,7 +31,7 @@ module Api
             :id,
             :name,
             :state,
-            courses_attributes: [
+            courses_attributes: %i[
               :id,
               :name,
               :state,
@@ -40,8 +41,12 @@ module Api
         )
       end
 
-      def record_not_found(exception)
-        render json: { error: "Record not found" }, status: :not_found
+      def record_not_found(*)
+        render json: { error: 'Record not found' }, status: :not_found
+      end
+
+      def set_vertical
+        @vertical = Vertical.find(params[:id])
       end
     end
   end
