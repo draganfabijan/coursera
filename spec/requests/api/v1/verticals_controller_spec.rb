@@ -1,11 +1,14 @@
 require 'rails_helper'
 
 RSpec.describe Api::V1::VerticalsController, type: :controller do
+
   describe 'GET #index' do
     let!(:vertical1) { create(:vertical) }
     let!(:vertical2) { create(:vertical) }
 
     before do
+      authenticate_request
+
       allow_any_instance_of(Vertical).to receive(:reindex).and_call_original
       Vertical.reindex
       get :index
@@ -27,6 +30,7 @@ RSpec.describe Api::V1::VerticalsController, type: :controller do
     let(:active_model_errors_double) { instance_double('ActiveModel::Errors') }
 
     before do
+      authenticate_request
       allow(Vertical).to receive(:find).and_return(vertical)
       allow(vertical).to receive(:errors).and_return(active_model_errors_double)
     end
