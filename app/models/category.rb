@@ -17,8 +17,8 @@ class Category < ApplicationRecord
   private
 
   def name_unique_across_categories_and_verticals
-    if Vertical.where(name: name).exists?
-      errors.add(:name, "must be unique across Categories and Verticals")
-    end
+    return unless Vertical.where(name: name).exists?
+
+    errors.add(:name, 'must be unique across Categories and Verticals')
   end
 end
