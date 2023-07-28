@@ -8,4 +8,5 @@ class Course < ApplicationRecord
 
   # Validations
   validates :name, :author, :state, presence: true
+  
 end

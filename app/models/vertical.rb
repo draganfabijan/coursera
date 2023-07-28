@@ -10,6 +10,9 @@ class Vertical < ApplicationRecord
   validates :name, presence: true
   validate :name_unique_across_categories_and_verticals
 
+  # Nested Attributes
+  accepts_nested_attributes_for :categories
+
   private
 
   def name_unique_across_categories_and_verticals

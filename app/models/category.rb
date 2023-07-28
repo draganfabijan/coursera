@@ -11,6 +11,9 @@ class Category < ApplicationRecord
   validates :name, :state, presence: true
   validate :name_unique_across_categories_and_verticals
 
+  # Nested Attributes
+  accepts_nested_attributes_for :courses
+
   private
 
   def name_unique_across_categories_and_verticals
