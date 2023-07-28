@@ -61,11 +61,16 @@ RSpec.configure do |config|
   # arbitrary gems may also be filtered via:
   # config.filter_gems_from_backtrace("gem name")
 
+  # Require all ruby files in the support directory
+  Dir[Rails.root.join('spec', 'support', '**', '*.rb')].each { |f| require f }
+
   config.include FactoryBot::Syntax::Methods
 
   config.before(:each) do
     allow_any_instance_of(Vertical).to receive(:reindex).and_return(true)
   end
+
+  config.include OauthHelper, type: :controller
 end
 
 Shoulda::Matchers.configure do |config|
