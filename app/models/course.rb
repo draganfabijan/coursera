@@ -1,8 +1,8 @@
-# frozen_string_literal: true
-
 # Course
 class Course < ApplicationRecord
   searchkick
+  # TODO: Create new file for ES purposes, with search_data method to index only columns that are needed
+  # for example remove created_at and updated_at
 
   # Associations
   belongs_to :category
@@ -11,7 +11,7 @@ class Course < ApplicationRecord
   validates :name, :author, :state, presence: true
 
   # Callbacks
-  # TODO: Add backgrond job to reindex
+  # TODO: Add background job to reindex
   after_commit :reindex
 
   # TODO: Add enums for state.

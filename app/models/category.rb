@@ -1,8 +1,8 @@
-# frozen_string_literal: true
-
 # Category
 class Category < ApplicationRecord
   searchkick
+  # TODO: Create new file for ES purposes, with search_data method to index only columns that are needed
+  # for example remove created_at and updated_at
 
   # Associations
   belongs_to :vertical
@@ -10,10 +10,11 @@ class Category < ApplicationRecord
 
   # Validations
   validates :name, :state, presence: true
+  validates :name, uniqueness: true
   validate :name_unique_across_categories_and_verticals
 
   # Callbacks
-  # TODO: Add backgrond job to reindex
+  # TODO: Add background job to reindex
   after_commit :reindex
 
   # Nested Attributes
