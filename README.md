@@ -30,11 +30,33 @@ You need to have Docker and Docker Compose installed on your machine to run this
     ```
     docker-compose build
     ```
-
 4. **Run database migrations:**
 
     ```
+    docker-compose exec web rails db:create
+    ```
+
+5. **Run database migrations:**
+
+    ```
     docker-compose exec web rails db:migrate
+    ```
+6. **Seed file:**
+
+    ```
+    docker-compose exec web rails db:seed
+    ```
+7. **For testing in dev create token**
+
+    ```rb
+    application = Doorkeeper::Application.create!(name: "MyApp", redirect_uri: "http://localhost")
+    token = Doorkeeper::AccessToken.create!(application_id: application.id, resource_owner_id: nil, scopes: "").token
+    ```
+    this is only for testing otherwise use oauth endpoints.
+    Set token in headers, for example:
+
+    ```
+    curl -H "Authorization: Bearer #{token}" http://localhost:3000/api/v1/verticals
     ```
 
 ## Running the application
@@ -65,8 +87,6 @@ docker-compose exec web rails console
 
 Please replace `web` with your service name if it's different in your `docker-compose.yml` file.
 
-## Contributing
 
-If you want to contribute to this project, please create a new branch, make your changes, and create a pull request.
 
-Enjoy coding!
+

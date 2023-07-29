@@ -1,14 +1,12 @@
 module Api
   module V1
     # Api::V1::VerticalsController
-    class VerticalsController < ApplicationController
-      include CourseHierarchyParams
-
+    class VerticalsController < BaseController
       before_action :set_vertical, only: :update
 
       def index
         # TODO: Add pagination
-        verticals = Vertical.search('*').results
+        verticals = Vertical.search('*', load: false).results
         render json: verticals
       end
 

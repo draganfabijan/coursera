@@ -10,6 +10,13 @@ RSpec.describe Category, type: :model do
     it { should validate_presence_of(:name) }
     it { should validate_presence_of(:state) }
 
+    context 'name uniquenes' do
+      let!(:vertical) { create(:vertical) }
+      subject { build(:category, vertical: vertical) }
+
+      it { should validate_uniqueness_of(:name) }
+    end
+
     context 'name uniqueness across categories and verticals' do
       context 'when name is different from any Vertical name' do
         let(:category) { build(:category, name: 'Different Name') }
