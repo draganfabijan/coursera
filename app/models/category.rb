@@ -2,6 +2,7 @@
 
 # Category
 class Category < ApplicationRecord
+  searchkick
 
   # Associations
   belongs_to :vertical
@@ -10,6 +11,9 @@ class Category < ApplicationRecord
   # Validations
   validates :name, :state, presence: true
   validate :name_unique_across_categories_and_verticals
+
+  # Callbacks
+  after_commit :reindex
 
   # Nested Attributes
   accepts_nested_attributes_for :courses
