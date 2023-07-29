@@ -18,7 +18,10 @@ category_data = [
 
 # Create categories and save them in an array
 categories = category_data.map do |category_attrs|
-  Category.find_or_create_by!(category_attrs)
+  Category.find_or_initialize_by(name: category_attrs[:name], vertical: category_attrs[:vertical]).tap do |category|
+    category.assign_attributes(category_attrs)
+    category.save!
+  end
 end
 puts 'Categories created'
 

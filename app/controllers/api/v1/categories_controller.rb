@@ -23,17 +23,7 @@ module Api
       private
 
       def category_params
-        params.require(:category).permit(
-          :id,
-          :name,
-          :state,
-          courses_attributes: [
-            :id,
-            :name,
-            :state,
-            :author
-          ]
-        )
+        params.require(:category).permit(*category_params_schema)
       end
 
       def set_category
