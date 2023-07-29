@@ -2,6 +2,8 @@ module Api
   module V1
     # Api::V1::VerticalsController
     class VerticalsController < ApplicationController
+      include CourseHierarchyParams
+
       before_action :set_vertical, only: :update
 
       def index
@@ -21,20 +23,7 @@ module Api
       private
 
       def vertical_params
-        params.require(:vertical).permit(
-          :name,
-          categories_attributes: [
-            :id,
-            :name,
-            :state,
-            courses_attributes: [
-              :id,
-              :name,
-              :state,
-              :author
-            ]
-          ]
-        )
+        params.require(:vertical).permit(*vertical_params_schema)
       end
 
       def set_vertical
