@@ -1,14 +1,13 @@
 module Api
   module V1
     # Api::V1::CategoriesController
-    class CategoriesController < ApplicationController
-      include CourseHierarchyParams
+    class CategoriesController < BaseController
 
       before_action :set_category, only: :update
 
       def index
         # TODO: Add pagination
-        categories = Category.search('*').results
+        categories = Category.search('*', load: false).results
         render json: categories
       end
 

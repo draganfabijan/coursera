@@ -1,14 +1,12 @@
 module Api
   module V1
     # Api::V1::CoursesController
-    class CoursesController < ApplicationController
-      include CourseHierarchyParams
-
+    class CoursesController < BaseController
       before_action :set_course, only: :update
 
       def index
         # TODO: Add pagination
-        courses = Course.search('*').results
+        courses = Course.search('*', load: false).results
         render json: courses
       end
 
