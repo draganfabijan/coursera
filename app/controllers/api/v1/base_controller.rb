@@ -4,3 +4,4 @@ module Api
       include CourseHierarchyParams
     end
   end
+end
