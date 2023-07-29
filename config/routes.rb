@@ -4,6 +4,7 @@ Rails.application.routes.draw do
     namespace :v1 do
       resources :verticals, only: [:index, :update]
       resources :categories, only: [:index, :update]
+      resources :courses, only: [:index, :update]
     end
   end
 end

@@ -1,6 +1,6 @@
 module Api
   module V1
-    # Api::V1::VerticalsController
+    # Api::V1::CategoriesController
     class CategoriesController < ApplicationController
       include CourseHierarchyParams
 
